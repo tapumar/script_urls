@@ -26,18 +26,6 @@ def execute_url_list(casa, logger):
     return (logger)
     create_json(nomeJson, logger)
 
-
-
-# while(True):
-#     logger = {'erros':[]}
-#     filename = "lista_urls.txt"
-#     nomeJson = str(datetime.now()) +".json"
-#     with open(filename) as casas:
-#         casas = list(casas)
-#         bar = Bar('Loading', fill='@', suffix='%(percent)d%%',max= 1000)
-#         casas = casas[1:]
-
-
 def threads(casas, logger, nomeJson):
     bar = Bar('Loading', fill='@', suffix='%(percent)d%%',max= 1000)
     threads = [threading.Thread(target=execute_url_list,
