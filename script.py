@@ -10,6 +10,7 @@ filename = "lista_urls.txt"
 def create_json(nomeJson, logger):
     with open(nomeJson, 'w') as fp:
         json.dump(logger, fp)
+
 def execute_url_list(casa, logger):
     try:
         start = time.time()
@@ -20,16 +21,17 @@ def execute_url_list(casa, logger):
             logger['erros'].append(log)
     except Exception as e:
         end = time.time()
-        if e:
-            log = {'url':casa, 'status':str(e),'tempo':end-start}
-            logger['erros'].append(log)
+        log = {'url':casa, 'status':str(e),'tempo':end-start}
+        logger['erros'].append(log)
     return (logger)
     create_json(nomeJson, logger)
 
 def threads(casas, logger, nomeJson):
     bar = Bar('Loading', fill='@', suffix='%(percent)d%%',max= 1000)
+
     threads = [threading.Thread(target=execute_url_list,
               args=(casa,logger, nomeJson, )) for casa in casas]
+
     print("Start")
     for thread in threads:
         thread.start()
@@ -42,7 +44,7 @@ def threads(casas, logger, nomeJson):
 def main():
     while(True):
         logger = {'erros':[]}
-        nomeJson = str(datetime.now()) +".json"
+        nomeJson = "{}.json".format(str(datetime.now()))
         with open(filename) as casas:
             casas = list(casas)
             casas = casas[1:]
