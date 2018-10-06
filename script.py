@@ -11,7 +11,7 @@ def create_json(nomeJson, logger):
     with open(nomeJson, 'w') as fp:
         json.dump(logger, fp)
 
-def execute_url_list(casa, logger):
+def execute_url_list(casa, logger, nomeJson):
     try:
         start = time.time()
         result = request.urlopen(casa)
