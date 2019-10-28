@@ -51,7 +51,7 @@ def main():
         threads(casas, logger, nomeJson)
         print()
         print("Done!")
-        time.sleep(300)
+        time.sleep(600)
 
 
 
